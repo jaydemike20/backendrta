@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework.authtoken',
     "corsheaders",
-    "accounts"
+    "accounts",
+
 ]
 
 # added
@@ -155,7 +156,8 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': True,
     'SEND_CONFIRMATION_EMAIL': True,
     'ACTIVATION_URL': 'activation/{uid}/{token}',
-    # 'SERIALIZERS': {
-    #     'user_create' :
-    # },
+    'LOGIN_FIELD': 'email',
+    'SERIALIZERS': {
+        'user_create' : 'accounts.serializers.CustomUserCreateSerializer'
+    },
 }
