@@ -12,4 +12,3 @@ class Profile(models.Model):
     birthdate = models.DateField()
     gender = models.CharField(max_length=6)
 
-
