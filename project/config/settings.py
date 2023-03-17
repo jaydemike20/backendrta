@@ -144,7 +144,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
 
 
-
 # added mailtrap
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
 EMAIL_HOST_USER = '14da49adba4074'
@@ -155,6 +154,7 @@ EMAIL_PORT = '2525'
 DJOSER = {
     'SEND_ACTIVATION_EMAIL': True,
     'SEND_CONFIRMATION_EMAIL': True,
+    # activation diay ni guys
     'ACTIVATION_URL': 'activation/{uid}/{token}',
     'LOGIN_FIELD': 'email',
     'SERIALIZERS': {

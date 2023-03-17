@@ -22,9 +22,7 @@ class CustomUserCreateSerializer(UserCreateSerializer):
             "last_name",
             settings.LOGIN_FIELD,
             settings.USER_ID_FIELD,
-            
             "password",
-
         )
 
     # added
