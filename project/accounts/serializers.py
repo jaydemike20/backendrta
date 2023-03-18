@@ -10,16 +10,35 @@ from accounts.models import Profile
 User = get_user_model()
 
 
+# profile
+class UserProfileSerializer(serializers.ModelSerializer):
+
+    def to_representation(self, instance):
+        return super().to_representation(instance)
+
+
+    # class Meta:
+    #     model = Profile
+    #     fields = ['birthdate', 'gender']   
+
+
+
+
 
 # login 
 class CustomUserSerializer(UserSerializer):
+
+    profile = UserProfileSerializer(read_only=True)
+
+
     class Meta:
         model = User
         fields = tuple(User.REQUIRED_FIELDS) + (
             settings.USER_ID_FIELD,
             settings.LOGIN_FIELD,
             'first_name',
-            'last_name'
+            'last_name',
+            'profile'
         )
         read_only_fields = (settings.LOGIN_FIELD,)
 
