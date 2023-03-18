@@ -159,6 +159,7 @@ DJOSER = {
     'LOGIN_FIELD': 'email',
     "PASSWORD_RESET_CONFIRM_URL": 'reset_password/{uid}/{token}',
     'SERIALIZERS': {
-        'user_create' : 'accounts.serializers.CustomUserCreateSerializer'
+        'user_create' : 'accounts.serializers.CustomUserCreateSerializer',
+        'current_user' : 'accounts.serializers.CustomUserSerializer'
     },
 }

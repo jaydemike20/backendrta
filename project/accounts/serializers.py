@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from djoser.serializers import UserCreateSerializer
+from djoser.serializers import UserCreateSerializer, UserSerializer
 from djoser.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
@@ -10,6 +10,22 @@ from accounts.models import Profile
 User = get_user_model()
 
 
+
+# login 
+class CustomUserSerializer(UserSerializer):
+    class Meta:
+        model = User
+        fields = tuple(User.REQUIRED_FIELDS) + (
+            settings.USER_ID_FIELD,
+            settings.LOGIN_FIELD,
+            'first_name',
+            'last_name'
+        )
+        read_only_fields = (settings.LOGIN_FIELD,)
+
+
+
+# registration
 class CustomUserCreateSerializer(UserCreateSerializer):
 
     first_name = serializers.CharField(max_length=255, write_only=True)
