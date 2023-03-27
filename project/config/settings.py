@@ -147,8 +147,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # added mailtrap
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '14da49adba4074'
-EMAIL_HOST_PASSWORD = 'db9061f979bbe7'
+EMAIL_HOST_USER = '061df45eb6ebea'
+EMAIL_HOST_PASSWORD = '98494b8a33eec4'
 EMAIL_PORT = '2525'
 
 # added
