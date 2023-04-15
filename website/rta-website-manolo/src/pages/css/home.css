@@ -1,0 +1,38 @@
+.ContainerCss{
+    width: 100%;
+    height: 50rem;
+    background: linear-gradient(#7ADFFF, #d1f0ff, #ffffff);
+    margin-top: -25px;
+}
+
+.InnerContainer{
+    display: flex;
+    position: absolute;
+    width: 85%;
+    padding: 4rem;
+    height: 95%;
+    margin-left: 15rem;
+    margin-top: 2.2rem;
+    border-radius: 40px;
+    background: linear-gradient(#def7ff, #d1f0ff52, #ffffff1e);
+}
+
+.SearchContainer{
+    display: flex;
+    position: absolute;
+    width: 85%;
+    padding: 4rem;
+    height: 95%;
+    margin-left: 15rem;
+    margin-top: 2.2rem;
+    border-radius: 40px;
+    background: linear-gradient(#def7ff, #d1f0ff52, #ffffff1e);
+    justify-content: center;
+
+}
+
+.PlateNumber{
+    background-color: white;
+    height: 55px;
+    border: 29px;
+}

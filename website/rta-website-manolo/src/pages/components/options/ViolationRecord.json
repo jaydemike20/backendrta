@@ -1,0 +1,31 @@
+{
+    "violations": [
+      {
+        "name": "John Smith",
+        "violation": "Speeding",
+        "date": "2023-04-10",
+        "address": "123 Main St",
+        "officer": "Officer Johnson"
+      },
+      {
+        "name": "Jane Doe",
+        "violation": "Running a red light",
+        "date": "2023-04-11",
+        "address": "456 Elm St",
+        "officer": "Officer Smith"
+      },
+      {
+        "name": "John Smith",
+        "violation": "Illegal parking",
+        "date": "2023-04-12",
+        "address": "789 Oak St",
+        "officer": "Officer Lee"
+      }
+    ]
+  }
+
+  
+  
+  
+  
+  

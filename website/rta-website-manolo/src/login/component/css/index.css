@@ -1,0 +1,92 @@
+.container{
+  background: linear-gradient(#7ADFFF, #d1f0ff, #ffffff);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.blackContainer{
+  background-color: rgba(255, 255, 255, 0.288);
+  width: 30%;
+  height: auto;
+  display: flex;
+  position: absolute;
+  border-radius: 40px;
+  box-shadow: 1px 1px 15px 1px  rgb(98, 208, 224);
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.blackContainer:hover{
+  box-shadow: 1px 1px 15px 1px rgb(0, 94, 110);
+}
+
+
+.SEG{
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.InputLogin{
+  width: 30rem;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.InputLocation{
+  width: 27rem;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.InputRemarks{
+  width: 85rem;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.btn{
+  width: 15rem;
+  height: 3rem;
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(1, 54, 54) !important;
+  transition: 0.1s;
+}
+
+.btn:active{
+  background-color: rgb(201, 255, 252) !important;
+}
+
+.root:hover {
+  background-color: #3A302A;
+  color: white;
+}
+
+.SignUp{
+  width: 12rem;
+  height: 50px;
+  border-radius: 5rem !important;
+  align-self: center;
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+  background: linear-gradient(#7ADFFF, #1C9AC1) ;
+
+}
+
+.SignIn{
+  width: 12rem;
+  height: 50px;
+  border-radius: 5rem !important;
+  align-self: center;
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+  background: linear-gradient(#7ADFFF, #1C9AC1) ;
+
+}
