@@ -18,3 +18,6 @@ class CustomActivationEmail(ActivationEmail):
         context["token"] = default_token_generator.make_token(user)
         context["url"] = settings.ACTIVATION_URL.format(**context)
         return context
+    
+class CustomConfirmationEmail(ActivationEmail):
+    template_name = "email/confirmation.html"

@@ -170,5 +170,6 @@ DJOSER = {
     },
     'EMAIL' : {
         'activation': 'accounts.email.CustomActivationEmail',
+        'confirmation': 'accounts.email.CustomConfirmationEmail',
     }
 }
