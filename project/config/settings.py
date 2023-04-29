@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,6 +50,9 @@ INSTALLED_APPS = [
 
 # added
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated'
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
@@ -71,7 +75,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,6 +155,10 @@ EMAIL_HOST_USER = '061df45eb6ebea'
 EMAIL_HOST_PASSWORD = '98494b8a33eec4'
 EMAIL_PORT = '2525'
 
+# frond end
+FRONTEND_URL = 'http://localhost:3000'
+
+
 # added
 DJOSER = {
     'SEND_ACTIVATION_EMAIL': True,
@@ -163,4 +171,9 @@ DJOSER = {
         'user_create' : 'accounts.serializers.CustomUserCreateSerializer',
         'current_user' : 'accounts.serializers.CustomUserSerializer'
     },
+    'EMAIL' : {
+        'activation': 'accounts.email.CustomActivationEmail',
+        'confirmation': 'accounts.email.CustomConfirmationEmail',
+    },
+
 }
