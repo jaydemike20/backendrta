@@ -3,7 +3,6 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-
 # Create your models here.
 
 # driver
@@ -17,9 +16,8 @@ class Driver(models.Model):
     status = models.CharField(max_length=50)
     nationality = models.CharField(max_length=100)
     license_number = models.CharField(max_length=50, unique=True)
-
     def __str__(self) -> str:
-        return f'{self.license_number}'
+        return f'{self.id}'
 
 
 class Violation(models.Model):
@@ -38,4 +36,4 @@ class TrafficTicket(models.Model):
     violations = models.ManyToManyField(Violation, blank=True)
     
     def __str__(self) -> str:
-        return f'{self.issued_date} - {self.issued_time} - {self.driver.license_number}'
+        return f'{self.id}'
