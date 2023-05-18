@@ -12,15 +12,9 @@ User = get_user_model()
 
 # profile
 class UserProfileSerializer(serializers.ModelSerializer):
-
-    def to_representation(self, instance):
-        return super().to_representation(instance)
-
-
-    # class Meta:
-    #     model = Profile
-    #     fields = ['birthdate', 'gender']   
-
+    class Meta:
+        model = Profile
+        fields = ['birthdate', 'gender', 'profilepic',]
 
 
 
