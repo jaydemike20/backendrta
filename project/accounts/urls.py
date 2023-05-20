@@ -1,5 +1,7 @@
 from django.urls import path, include
 from accounts.views import ProfileListCreateAPIView, ProfileRetrieveUpdateDestroyAPIView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('djoser.urls')),
@@ -7,3 +9,4 @@ urlpatterns = [
     path('profile/', ProfileListCreateAPIView.as_view(), name="profile-list" ),
     path('profile/<int:pk>/', ProfileRetrieveUpdateDestroyAPIView.as_view(), name="profile-details" )
 ]
+

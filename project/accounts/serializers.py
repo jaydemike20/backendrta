@@ -12,13 +12,24 @@ User = get_user_model()
 
 # profile
 class UserProfileSerializer(serializers.ModelSerializer):
+    profilepic = serializers.ImageField(max_length=None, use_url=True)
+
     class Meta:
         model = Profile
-        fields = ['birthdate', 'gender', 'profilepic',]
+        fields = ['id', 'profilepic', 'birthdate', 'gender']
+        read_only_fields = ['id']
 
+    def update(self, instance, validated_data):
+        if self.context['request'].user != instance.user:
+            raise serializers.ValidationError("You are not allowed to update this profile.")
 
-
-
+        instance.profilepic = validated_data.get('profilepic', instance.profilepic)
+        instance.birthdate = validated_data.get('birthdate', instance.birthdate)
+        instance.gender = validated_data.get('gender', instance.gender)
+        instance.save()
+        return instance
+    
+    
 # login 
 class CustomUserSerializer(UserSerializer):
 
