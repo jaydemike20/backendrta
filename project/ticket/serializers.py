@@ -7,11 +7,14 @@ User = get_user_model()
 
 
 class DriverSerializer(serializers.ModelSerializer):
+    birthday = serializers.DateField(format='%Y-%m-%d')
+
     class Meta:
         model = Driver
         fields = '__all__'
 
 class TrafficTicketSerializers(serializers.ModelSerializer):
+
     class Meta:
         model = TrafficTicket
         exclude = ['officer',]

@@ -13,6 +13,7 @@ User = get_user_model()
 # profile
 class UserProfileSerializer(serializers.ModelSerializer):
     profilepic = serializers.ImageField(max_length=None, use_url=True)
+    birthdate = serializers.DateField(format='%d-%m-%Y')
 
     class Meta:
         model = Profile
