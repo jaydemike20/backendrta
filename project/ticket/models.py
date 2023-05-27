@@ -14,10 +14,11 @@ class Driver(models.Model):
     mobile_number = models.CharField(max_length=20)
     gender = models.CharField(max_length=20)
     status = models.CharField(max_length=50)
+    birthday = models.DateField()
     nationality = models.CharField(max_length=100)
     license_number = models.CharField(max_length=50, primary_key=True)
     def __str__(self) -> str:
-        return f'{self.license_number}'
+        return f'{self.first_name} {self.last_name} - {self.license_number}'
 
 
 class TrafficTicket(models.Model):
