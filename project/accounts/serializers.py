@@ -21,8 +21,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
         read_only_fields = ['id']
 
     def update(self, instance, validated_data):
-        if self.context['request'].user != instance.user:
-            raise serializers.ValidationError("You are not allowed to update this profile.")
+        # if self.context['request'].user != instance.user:
+        #     raise serializers.ValidationError("You are not allowed to update this profile.")
 
         instance.profilepic = validated_data.get('profilepic', instance.profilepic)
         instance.birthdate = validated_data.get('birthdate', instance.birthdate)

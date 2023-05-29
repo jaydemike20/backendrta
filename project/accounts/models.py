@@ -8,7 +8,7 @@ User = get_user_model()
 # table for profile of rta officer
 def profile_pic_upload_path(instance, filename):
     # Construct the upload path dynamically
-    return f"profile_pics/{instance.User.id}/{filename}"    
+    return f"profile_pics/{filename}".format(filename=filename)    
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -17,6 +17,6 @@ class Profile(models.Model):
     gender = models.CharField(max_length=10)
 
     def __str__(self):
-        return f'{self.user.first_name} {self.user.last_name}'
+        return self.id
     
 

@@ -7,6 +7,6 @@ urlpatterns = [
     path('', include('djoser.urls')),
     path('', include('djoser.urls.authtoken')),
     path('profile/', ProfileListCreateAPIView.as_view(), name="profile-list" ),
-    path('profile/<int:pk>/', ProfileRetrieveUpdateDestroyAPIView.as_view(), name="profile-details" )
+    path('profile/<str:pk>/', ProfileRetrieveUpdateDestroyAPIView.as_view(), name="profile-details" )
 ]
 
