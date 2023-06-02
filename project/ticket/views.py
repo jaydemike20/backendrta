@@ -8,26 +8,24 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 
 class TrafficTicketListCreateAPIView(ListCreateAPIView):
     serializer_class = TrafficTicketSerializers
-    # queryset = TrafficTicket.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        # Return only the tickets issued by the current user
-        return TrafficTicket.objects.filter(officer=self.request.user)
+        # Return all traffic tickets
+        return TrafficTicket.objects.all()
 
     def perform_create(self, serializer):
+        # Set the officer as the current authenticated user
         serializer.save(officer=self.request.user)
 
 
 class TrafficTicketRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = TrafficTicketSerializers
-    # queryset = TrafficTicket.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        # Return only the ticket if it was issued by the current user
-        return TrafficTicket.objects.filter(id=self.kwargs['pk'], officer=self.request.user)
-
+        # Return all traffic tickets
+        return TrafficTicket.objects.all()
 
 
 class DriverListCreateAPIView(ListCreateAPIView):
@@ -36,7 +34,6 @@ class DriverListCreateAPIView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
 class DriverRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
-
     serializer_class = DriverSerializer
-    queryset = Driver.objects.all()   
+    queryset = Driver.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]

@@ -6,6 +6,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.core import exceptions as django_exceptions
 from django.db import IntegrityError, transaction
 from accounts.models import Profile
+from rest_framework.exceptions import ValidationError
 
 User = get_user_model()
 
@@ -20,15 +21,22 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = ['id', 'profilepic', 'birthdate', 'gender']
         read_only_fields = ['id']
 
-    def update(self, instance, validated_data):
-        # if self.context['request'].user != instance.user:
-        #     raise serializers.ValidationError("You are not allowed to update this profile.")
+    def create(self, validated_data):
+        user = self.context['request'].user
+        if Profile.objects.filter(user=user).exists():
+            raise ValidationError("A profile already exists for this user.")
+        validated_data.pop('user', None)  # Remove the 'user' key from validated_data
+        profile = Profile.objects.create(user=user, **validated_data)
+        return profile
 
+    
+    def update(self, instance, validated_data):
         instance.profilepic = validated_data.get('profilepic', instance.profilepic)
         instance.birthdate = validated_data.get('birthdate', instance.birthdate)
         instance.gender = validated_data.get('gender', instance.gender)
         instance.save()
         return instance
+
     
     
 # login 

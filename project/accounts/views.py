@@ -10,26 +10,19 @@ from rest_framework import generics
 
 class ProfileListCreateAPIView(ListCreateAPIView):
     serializer_class = UserProfileSerializer
-    # queryset = Profile.objects.all()
+    queryset = Profile.objects.all()
+    permission_classes = [IsAuthenticated]
 
-    permission_classes = [IsAuthenticated]  # Ensure the user is authenticated
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
-    def get_queryset(self):
-        return Profile.objects.filter(user=self.request.user)
+class ProfileRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = UserProfileSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_object(self):
         queryset = self.get_queryset()
-        obj = generics.get_object_or_404(queryset)
+        obj = generics.get_object_or_404(queryset, user=self.request.user)
         self.check_object_permissions(self.request, obj)
-        return obj  
-
-class ProfileRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
-
-    # queryset = Profile.objects.all()   
-    serializer_class = UserProfileSerializer
-    
-    permission_classes = [IsAuthenticated]  # Ensure the user is authenticated
-
-    def get_queryset(self):
-        user = self.request.user
-        return Profile.objects.filter(user=user)     
+        return obj
