@@ -10,16 +10,6 @@ def profile_pic_upload_path(instance, filename):
     # Construct the upload path dynamically
     return f"profile_pics/{filename}".format(filename=filename)    
 
-# class Profile(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     profilepic = models.ImageField(upload_to='profile_pics')
-#     birthdate = models.DateField()
-#     gender = models.CharField(max_length=10)
-
-#     def __str__(self):
-#         return self.id
-    
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profilepic = models.ImageField(upload_to='profile_pics')
