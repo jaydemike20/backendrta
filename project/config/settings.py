@@ -153,11 +153,13 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 
 
-# added mailtrap
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '061df45eb6ebea'
-EMAIL_HOST_PASSWORD = '98494b8a33eec4'
-EMAIL_PORT = '2525'
+# GMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True  
+EMAIL_HOST_USER = 'jaydemike21@gmail.com'
+EMAIL_HOST_PASSWORD = 'epvcwqrbtxtzpgcp'
 
 # frond end
 FRONTEND_URL = 'http://localhost:3000'
@@ -182,5 +184,5 @@ DJOSER = {
         'password_reset': 'accounts.email.CustomPasswordResetEmail',
         'password_changed_confirmation': 'accounts.email.PasswordChangedConfirmationEmail'
     },
-
+    'DEFAULT_FROM_EMAIL': 'jaydemike21@gmail.com', 
 }
