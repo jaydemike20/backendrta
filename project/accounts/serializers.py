@@ -64,7 +64,7 @@ class CustomUserCreateSerializer(UserCreateSerializer):
     first_name = serializers.CharField(max_length=255, write_only=True)
     last_name = serializers.CharField(max_length=255, write_only=True)
     password2 = serializers.CharField(write_only=True)
-
+    
     class Meta:
         model = User
         fields = tuple(User.REQUIRED_FIELDS) + (
@@ -73,7 +73,7 @@ class CustomUserCreateSerializer(UserCreateSerializer):
             settings.LOGIN_FIELD,
             settings.USER_ID_FIELD,
             "password",
-            "password2"
+            "password2",
         )
 
     # added
@@ -122,8 +122,8 @@ class CustomUserCreateSerializer(UserCreateSerializer):
 
             user_data=self.clean_user_data(validated_data)
             user = User.objects.create_user(**user_data)
-            if settings.SEND_ACTIVATION_EMAIL:
-                user.is_active = False
+            if settings.SEND_CONFIRMATION_EMAIL:
+                user.is_active = True   
                 user.save(update_fields=["is_active"])
         return user
     

@@ -162,15 +162,15 @@ EMAIL_HOST_USER = 'jaydemike21@gmail.com'
 EMAIL_HOST_PASSWORD = 'epvcwqrbtxtzpgcp'
 
 # frond end
-FRONTEND_URL = 'http://localhost:3000'
+FRONTEND_URL = 'https://jaydemike20.github.io/samserver'
 
 
 # added
 DJOSER = {
-    'SEND_ACTIVATION_EMAIL': True,
+    # 'SEND_ACTIVATION_EMAIL': True,
     'SEND_CONFIRMATION_EMAIL': True,
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
-    'ACTIVATION_URL': 'activation/{uid}/{token}',
+    # 'ACTIVATION_URL': 'activation/{uid}/{token}',
     'LOGIN_FIELD': 'email',
     "PASSWORD_RESET_CONFIRM_URL": 'reset_password/{uid}/{token}',
     # "USERNAME_RESET_CONFIRM_URL": 'reset_username/{uid}/{token}',
@@ -179,7 +179,6 @@ DJOSER = {
         'current_user' : 'accounts.serializers.CustomUserSerializer'
     },
     'EMAIL' : {
-        'activation': 'accounts.email.CustomActivationEmail',
         'confirmation': 'accounts.email.CustomConfirmationEmail',
         'password_reset': 'accounts.email.CustomPasswordResetEmail',
         'password_changed_confirmation': 'accounts.email.PasswordChangedConfirmationEmail'

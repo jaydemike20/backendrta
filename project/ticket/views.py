@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 
 class TrafficTicketListCreateAPIView(ListCreateAPIView):
     serializer_class = TrafficTicketSerializers
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    # permission_classes = [IsAuthenticated]
     queryset = TrafficTicket.objects.all()
 
     # def get_queryset(self):
